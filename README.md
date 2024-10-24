@@ -9,7 +9,8 @@ Install dependencies
 pip3 install -r requirements.txt
 
 run app 
-streamlit run app.py
+uvicorn main:app --reload
+streamlit run application.py
 
 to exit the virtual envioroment you:
 deactivate
