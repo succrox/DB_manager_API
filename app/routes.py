@@ -9,7 +9,6 @@ from typing import List
 
 router = APIRouter()
 
-# Inserción masiva de clientes (customers)
 @router.post("/customers/", response_model=dict)
 def bulk_insert_customers(customers: List[CustomerCreate]):
     conn = get_db_connection()
@@ -33,7 +32,6 @@ def bulk_insert_customers(customers: List[CustomerCreate]):
         cursor.close()
         conn.close()
 
-# Inserción masiva de productos (products)
 @router.post("/products/", response_model=dict)
 def bulk_insert_products(products: List[ProductCreate]):
     conn = get_db_connection()
@@ -49,7 +47,7 @@ def bulk_insert_products(products: List[ProductCreate]):
         cursor.executemany(query, values)
         conn.commit()
 
-        return {"OK"}
+        return {"message": "OK"}
     except Exception as e:
         conn.rollback()
         raise HTTPException(status_code=500, detail=str(e))
@@ -57,7 +55,6 @@ def bulk_insert_products(products: List[ProductCreate]):
         cursor.close()
         conn.close()
 
-# Inserción masiva de órdenes (orders)
 @router.post("/orders/", response_model=dict)
 def bulk_insert_orders(orders: List[OrderCreate]):
     conn = get_db_connection()
@@ -73,7 +70,7 @@ def bulk_insert_orders(orders: List[OrderCreate]):
         cursor.executemany(query, values)
         conn.commit()
 
-        return {"OK"}
+        return {"message": "OK"}
     except Exception as e:
         conn.rollback()
         raise HTTPException(status_code=500, detail=str(e))
@@ -81,7 +78,6 @@ def bulk_insert_orders(orders: List[OrderCreate]):
         cursor.close()
         conn.close()
 
-# Inserción masiva de detalles de pedido (order_details)
 @router.post("/order_details/", response_model=dict)
 def bulk_insert_order_details(order_details: List[OrderDetailCreate]):
     conn = get_db_connection()
@@ -97,7 +93,7 @@ def bulk_insert_order_details(order_details: List[OrderDetailCreate]):
         cursor.executemany(query, values)
         conn.commit()
 
-        return {"OK"}
+        return {"message": "OK"}
     except Exception as e:
         conn.rollback()
         raise HTTPException(status_code=500, detail=str(e))
@@ -105,7 +101,6 @@ def bulk_insert_order_details(order_details: List[OrderDetailCreate]):
         cursor.close()
         conn.close()
 
-# Inserción masiva de vendedores (vendors)
 @router.post("/vendors/", response_model=dict)
 def bulk_insert_vendors(vendors: List[VendorCreate]):
     conn = get_db_connection()
@@ -122,7 +117,7 @@ def bulk_insert_vendors(vendors: List[VendorCreate]):
         cursor.executemany(query, values)
         conn.commit()
 
-        return {"OK"}
+        return {"message": "OK"}
     except Exception as e:
         conn.rollback()
         raise HTTPException(status_code=500, detail=str(e))
@@ -130,7 +125,6 @@ def bulk_insert_vendors(vendors: List[VendorCreate]):
         cursor.close()
         conn.close()
 
-# Inserción masiva de ventas (sales)
 @router.post("/sales/", response_model=dict)
 def bulk_insert_sales(sales: List[SaleCreate]):
     conn = get_db_connection()
@@ -147,7 +141,7 @@ def bulk_insert_sales(sales: List[SaleCreate]):
         cursor.executemany(query, values)
         conn.commit()
 
-        return {"OK"}
+        return {"message": "OK"}
     except Exception as e:
         conn.rollback()
         raise HTTPException(status_code=500, detail=str(e))
