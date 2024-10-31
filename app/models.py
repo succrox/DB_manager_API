@@ -2,7 +2,6 @@ from pydantic import BaseModel, Field, EmailStr
 from typing import Optional
 from datetime import date
 
-# Modelo para Customers (Clientes)
 class CustomerCreate(BaseModel):
     customer_name: str = Field(..., description="Nombre del cliente (campo requerido)")
     contact_info: Optional[str] = Field(None, description="Información de contacto del cliente")
@@ -10,7 +9,6 @@ class CustomerCreate(BaseModel):
 class Customer(CustomerCreate):
     id: int
 
-# Modelo para Products (Productos)
 class ProductCreate(BaseModel):
     product_name: str = Field(..., description="Nombre del producto (campo requerido)")
     price: float = Field(..., description="Precio del producto")
@@ -18,7 +16,6 @@ class ProductCreate(BaseModel):
 class Product(ProductCreate):
     id: int
 
-# Modelo para Orders (Órdenes)
 class OrderCreate(BaseModel):
     order_date: date = Field(..., description="Fecha de la orden (campo requerido)")
     customer_id: int = Field(..., description="ID del cliente (campo requerido)")
@@ -26,7 +23,6 @@ class OrderCreate(BaseModel):
 class Order(OrderCreate):
     id: int
 
-# Modelo para OrderDetails (Detalles de Órdenes)
 class OrderDetailCreate(BaseModel):
     order_id: int = Field(..., description="ID de la orden (campo requerido)")
     product_id: int = Field(..., description="ID del producto (campo requerido)")
@@ -35,7 +31,6 @@ class OrderDetailCreate(BaseModel):
 class OrderDetail(OrderDetailCreate):
     id: int
 
-# Modelo para Vendors (Vendedores)
 class VendorCreate(BaseModel):
     name: str = Field(..., description="Nombre del vendedor (campo requerido)")
     zone: Optional[str] = Field(None, description="Zona del vendedor")
@@ -51,7 +46,6 @@ class VendorCreate(BaseModel):
 class Vendor(VendorCreate):
     id: int
 
-# Modelo para Sales (Ventas)
 class SaleCreate(BaseModel):
     id_vendor: int = Field(..., description="ID del vendedor (campo requerido)")
     name_client: str = Field(..., description="Nombre del cliente (campo requerido)")
