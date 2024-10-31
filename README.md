@@ -1,4 +1,4 @@
-# db_manager_xlcs_conv
+# db_manager_API
 python database manager with API interactions to db.
 
 for creating the virtual envioroment in windows you use the command:
