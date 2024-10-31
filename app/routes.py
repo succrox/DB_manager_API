@@ -105,7 +105,7 @@ def bulk_insert_order_details(order_details: List[OrderDetailCreate]):
 @router.post("/vendors/", response_model=dict)
 def bulk_insert_vendors(vendors: List[VendorCreate]):
     conn = get_db_connection()
-    cursor = conn.cursor()
+    cursor = conn.cursor(dictionary=True)
     
     try:
         query = """
