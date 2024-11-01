@@ -252,7 +252,7 @@ def get_sales_by_vendor():
     finally:
         cursor.close()
         conn.close()
-
+        
 @router.get("/top_selling_products/")
 def get_top_selling_products():
     conn = get_db_connection()
